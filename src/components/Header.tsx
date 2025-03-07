@@ -50,7 +50,7 @@ return (
         className={`${OrbitronStencilOne.className} text-[40px] font-normal leading-[150%] text-[var(--logo--color)]`}
         href="/"
       >
-        Capputenno
+        BrunotDev
       </a>
 
       {/* Área de busca e controle do carrinho */}
