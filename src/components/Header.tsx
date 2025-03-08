@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Orbitron as OrbitronStencilOneFont } from "next/font/google";
-import { PrimaryInputWSearchIcon} from "./primary-input";
-import { CartControl } from "./cart-control";
+import { PrimaryInput} from "./primary-input";
 import { useFilter } from "@/hooks/useFilter";
 
 const OrbitronStencilOne = OrbitronStencilOneFont({
@@ -55,12 +54,12 @@ return (
 
       {/* Área de busca e controle do carrinho */}
       <div className="flex items-center justify-center gap-[65px]">
-        <PrimaryInputWSearchIcon
+        <PrimaryInput
           value={search}
           handlechange={setSearch}
           placeholder="Procurando algo específico"
         />
-        <CartControl />
+        
       </div>
 
       {/* Botão de alternância de tema */}
