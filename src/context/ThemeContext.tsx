@@ -12,19 +12,25 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [isDark, setIsDark] = useState(false);
 
+  // Ao montar, busca a preferência no localStorage (default light)
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      setIsDark(storedTheme === "dark");
-      document.documentElement.classList.toggle("dark", storedTheme === "dark");
-    }
+    setIsDark(storedTheme ? storedTheme === "dark" : false);
   }, []);
 
+  // Toda vez que isDark mudar, atualiza a classe no elemento <html>
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    // Salva a preferência
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }, [isDark]);
+
   const toggleTheme = () => {
-    const newTheme = isDark ? "light" : "dark";
-    document.documentElement.classList.toggle("dark", !isDark);
-    localStorage.setItem("theme", newTheme);
-    setIsDark(!isDark);
+    setIsDark((prev) => !prev);
   };
 
   return (

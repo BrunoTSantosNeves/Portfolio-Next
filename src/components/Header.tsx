@@ -56,15 +56,6 @@ export function Header() {
   return (
     <TagHeader $isDark={isDark}>
       <Logo href="/">BrunotDev</Logo>
-
-      <div style={{ display: "flex", alignItems: "center", gap: "65px" }}>
-        <input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Pesquisar projeto"
-        />
-      </div>
-
       <ThemeToggleButton onClick={toggleTheme}>
         {isDark ? "Light" : "Dark"}
       </ThemeToggleButton>
