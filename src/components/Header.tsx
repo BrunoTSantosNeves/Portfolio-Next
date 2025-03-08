@@ -1,10 +1,13 @@
-// src/components/Header.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { PrimaryInput } from "./primary-input";
 import { useFilter } from "@/hooks/useFilter";
+import { Ubuntu } from "next/font/google";
+
+// Importando a fonte Ubuntu
+const ubuntu = Ubuntu({ subsets: ["latin"], weight: ["400", "700"] });
 
 // Exemplo de configuração das variáveis de tema via CSS custom properties (você pode definir isso globalmente)
 const headerBgLight = "#f5f5f5";
@@ -27,11 +30,11 @@ const TagHeader = styled.header<{ isDark: boolean }>`
   z-index: 50;
 `;
 
-// Logo
+// Logo com fonte Ubuntu
 const Logo = styled.a`
-  font-family: var(--font-geist-sans, sans-serif);
+  font-family: ${ubuntu.style.fontFamily};
   color: ${logoColor};
-  font-weight: 400;
+  font-weight: 700;
   font-size: 40px;
   line-height: 150%;
   text-decoration: none;
@@ -83,16 +86,15 @@ export function Header() {
   return (
     <TagHeader isDark={isDark}>
       {/* Logo */}
-      <Logo href="/">Capputenno</Logo>
+      <Logo href="/">BrunotDev</Logo>
 
       {/* Área de busca e controle do carrinho */}
       <div style={{ display: "flex", alignItems: "center", gap: "65px" }}>
         <PrimaryInput
           value={search}
           handlechange={setSearch}
-          placeholder="Procurando algo específico"
+          placeholder="Pesquisar projeto"
         />
-       
       </div>
 
       {/* Botão de alternância de tema */}
