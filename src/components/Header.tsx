@@ -55,7 +55,7 @@ export function Header() {
 
   return (
     <TagHeader $isDark={isDark}>
-      <Logo href="/">BrunotDev</Logo>
+      <Logo href="/">Bruno.t Dev</Logo>
       <ThemeToggleButton onClick={toggleTheme}>
         {isDark ? "Light" : "Dark"}
       </ThemeToggleButton>

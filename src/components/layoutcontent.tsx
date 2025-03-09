@@ -3,13 +3,7 @@
 import { useTheme } from "@/context/ThemeContext";
 
 export default function LayoutContent({ children }: { children: React.ReactNode }) {
-  const { isDark } = useTheme(); // Obtém o tema do contexto
+  const { isDark } = useTheme();
 
-  return (
-    <html lang="pt-br" className={isDark ? "dark" : ""}>
-      <body>
-        {children}
-      </body>
-    </html>
-  );
+  return <main className={isDark ? "dark" : ""}>{children}</main>;
 }
