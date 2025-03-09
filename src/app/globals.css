@@ -12,19 +12,20 @@
   --font-mono: "Geist Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --header-bg: #1e1e1e;
-    --accent: #60a5fa;
-  }
+/* Quando a classe .dark for adicionada ao <html>, aplica o modo escuro */
+.dark {
+  --background: #121212;
+  --foreground: #ededed;
+  --header-bg: #1e1e1e;
+  --accent: #60a5fa;
 }
 
+/* Aplica as variáveis ao body */
 body {
+  background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
