@@ -2,10 +2,11 @@
 
 import styled from "styled-components";
 import { useFilter } from "@/hooks/useFilter";
-import { Ubuntu } from "next/font/google";
+import { Inter } from "next/font/google";
 import { useTheme } from "@/context/ThemeContext";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
-const ubuntu = Ubuntu({ subsets: ["latin"], weight: ["400", "700"] });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "700"] });
 
 const headerBgLight = "#f5f5f5";
 const headerBgDark = "#1e1e1e";
@@ -27,7 +28,7 @@ const TagHeader = styled.header<{ $isDark: boolean }>`
 `;
 
 const Logo = styled.a`
-  font-family: ${ubuntu.style.fontFamily};
+  font-family: ${inter.style.fontFamily};
   color: ${logoColor};
   font-weight: 700;
   font-size: 40px;
@@ -35,30 +36,15 @@ const Logo = styled.a`
   text-decoration: none;
 `;
 
-const ThemeToggleButton = styled.button`
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: none;
-  background-color: ${logoColor};
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    opacity: 0.9;
-  }
-`;
-
 export function Header() {
   const { setSearch, search } = useFilter();
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark } = useTheme();
 
   return (
     <TagHeader $isDark={isDark}>
       <Logo href="/">Bruno.t Dev</Logo>
-      <ThemeToggleButton onClick={toggleTheme}>
-        {isDark ? "Light" : "Dark"}
-      </ThemeToggleButton>
+      <ThemeToggle />
     </TagHeader>
   );
 }
+
