@@ -1,13 +1,14 @@
 import { useTheme } from "@/context/ThemeContext";
+import { useMounted } from "@/hooks/useMounted";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-
 const ToggleContainer = styled.label<{ $customTheme: "dark" | "light" }>`
   width: 60px;
   height: 30px;
-  background-color: ${(props) => (props.$customTheme === "dark" ? "#fff" : "#222")};
+  background-color: ${(props) =>
+    props.$customTheme === "dark" ? "#fff" : "#222"};
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -36,13 +37,13 @@ const Icon = styled(FontAwesomeIcon)<{ $customTheme: "dark" | "light" }>`
 `;
 
 export function ThemeToggle() {
- 
   const { isDark, toggleTheme } = useTheme();
+  const isMounted = useMounted();
 
   return (
     <ToggleContainer onClick={toggleTheme} $customTheme={isDark ? "dark" : "light"}>
       <ToggleSlider $isDark={isDark}>
-        <Icon $customTheme={isDark ? "dark" : "light"} icon={isDark ? faMoon : faSun} />
+        {isMounted && <Icon $customTheme={isDark ? "dark" : "light"} icon={isDark ? faMoon : faSun} />}
       </ToggleSlider>
     </ToggleContainer>
   );
