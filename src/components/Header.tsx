@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"], weight: ["400", "700"] });
 
 const headerBgLight = "#f5f5f5";
 const headerBgDark = "#1e1e1e";
-const logoColor = "#3b82f6";
+const logoColor = "#404e50";
 
 const TagHeader = styled.header<{ $isDark: boolean }>`
   display: flex;
@@ -42,9 +42,8 @@ export function Header() {
 
   return (
     <TagHeader $isDark={isDark}>
-      <Logo href="/">Bruno.t Dev</Logo>
+      <Logo href="/">Bruno Dev</Logo>
       <ThemeToggle />
     </TagHeader>
   );
 }
-
